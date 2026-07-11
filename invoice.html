@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice Preview | ZenTriX CourierDesk</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/invoice.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="invoice">
+  <div class="page-loader" id="pageLoader"><span class="loader-bolt">ϟ</span></div>
+  <header class="preview-toolbar no-print">
+    <div class="preview-brand"><a href="index.html"><img src="assets/company-logo.png" alt="ZenTriX"></a><span>Invoice Preview</span></div>
+    <div class="preview-actions"><a class="button button-secondary" href="history.html">← History</a><button class="button button-secondary" id="downloadPdfButton">⇩ Download PDF</button><button class="button button-primary" id="printInvoiceButton">⌁ Print Invoice</button></div>
+  </header>
+  <main class="invoice-stage">
+    <div class="invoice-paper template-gold" id="invoicePaper">
+      <div class="invoice-accent"></div>
+      <header class="invoice-header">
+        <div class="invoice-company"><img id="invoiceLogo" src="assets/company-logo.png" alt="Courier company logo"><div><h1 id="companyName">Courier Company</h1><p id="companyAddress"></p><p><span id="companyPhone"></span><span id="companyEmail"></span><span id="companyWebsite"></span></p></div></div>
+        <div class="invoice-title"><span>DELIVERY</span><strong>INVOICE</strong><p id="paymentBadge" class="payment-badge">PAID</p></div>
+      </header>
+      <section class="invoice-meta">
+        <div><span>Invoice number</span><strong id="invoiceNumber"></strong></div><div><span>Tracking ID</span><strong id="trackingNumber"></strong></div><div><span>Date & time</span><strong id="invoiceDate"></strong></div><div><span>Delivery status</span><strong id="invoiceDeliveryStatus"></strong></div>
+      </section>
+      <section class="party-grid">
+        <article class="party-card"><span class="section-kicker">SENDER / FROM</span><h2 id="senderName"></h2><p id="senderCompany"></p><p id="senderAddress"></p><p id="senderPhone"></p><p id="senderEmail"></p></article>
+        <article class="party-card receiver-card"><span class="section-kicker">RECEIVER / DELIVER TO</span><h2 id="receiverName"></h2><p id="receiverCompany"></p><p id="receiverAddress"></p><p id="receiverPhone"></p><p id="receiverEmail"></p></article>
+      </section>
+      <section class="package-section">
+        <div class="invoice-section-title"><div><span class="section-kicker">SHIPMENT</span><h2>Package details</h2></div><span id="deliveryType" class="service-chip"></span></div>
+        <table class="package-table"><thead><tr><th>Description</th><th>Weight</th><th>Quantity</th><th>Reference</th></tr></thead><tbody><tr><td id="packageDescription"></td><td id="packageWeight"></td><td id="packageQuantity"></td><td id="packageReference"></td></tr></tbody></table>
+      </section>
+      <section class="payment-section">
+        <div class="tracking-visual"><div id="qrCode" class="qr-code" aria-label="Tracking QR code"></div><svg id="barcode"></svg><small id="barcodeText"></small></div>
+        <div class="payment-summary"><div><span>Delivery charge</span><strong id="deliveryPrice"></strong></div><div><span>Tax / additional charge</span><strong id="taxAmount"></strong></div><div class="cod-row hidden" id="codRow"><span>COD amount to collect</span><strong id="codAmount"></strong></div><div class="total-row"><span>Total</span><strong id="grandTotal"></strong></div><p id="paymentMessage"></p></div>
+      </section>
+      <footer class="invoice-footer"><div><strong>Thank you for choosing us.</strong><p id="footerMessage">We appreciate your business and trust.</p></div><div class="powered-by"><span>Technology partner</span><img src="assets/company-logo.png" alt="Powered by ZenTriX"><small>Powered by ZenTriX · Your Digital Transformation Partner.</small></div></footer>
+    </div>
+    <div class="invoice-not-found hidden" id="invoiceNotFound"><h2>Invoice not found</h2><p>The requested invoice may have been removed.</p><a class="button button-primary" href="history.html">Back to history</a></div>
+  </main>
+  <div class="toast-region no-print" id="toastRegion" aria-live="polite"></div>
+  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.6/dist/JsBarcode.all.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js"></script>
+  <script src="js/storage.js"></script><script src="js/app.js"></script><script src="js/invoice.js"></script><script src="js/print.js"></script>
+</body>
+</html>

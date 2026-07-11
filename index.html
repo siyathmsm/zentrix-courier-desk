@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ZenTriX Courier Delivery Invoice Generator">
+  <title>Create Invoice | ZenTriX CourierDesk</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animation.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="create">
+  <div class="page-loader" id="pageLoader"><span class="loader-bolt">ϟ</span></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html" aria-label="ZenTriX CourierDesk home">
+        <img src="assets/company-logo.png" alt="ZenTriX">
+        <span class="brand-product">CourierDesk</span>
+      </a>
+      <nav class="side-nav" aria-label="Primary navigation">
+        <a class="nav-link active" href="index.html"><span>＋</span> Create Invoice</a>
+        <a class="nav-link" href="history.html"><span>▦</span> Invoice History</a>
+        <a class="nav-link" href="settings.html"><span>⚙</span> Company Settings</a>
+      </nav>
+      <div class="sidebar-card">
+        <span class="eyebrow">Browser storage</span>
+        <strong>Your data stays on this device.</strong>
+        <p>No backend or account is required.</p>
+      </div>
+      <div class="sidebar-footer">Developed by <strong>ZenTriX</strong></div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="menuButton" aria-label="Open menu">☰</button>
+        <div>
+          <span class="eyebrow">Courier operations</span>
+          <h1>Create delivery invoice</h1>
+        </div>
+        <div class="topbar-actions">
+          <button class="icon-button" id="themeToggle" aria-label="Toggle dark mode">☾</button>
+          <a class="button button-secondary hide-mobile" href="history.html">View history</a>
+        </div>
+      </header>
+
+      <section class="stats-grid compact-stats" aria-label="Invoice statistics">
+        <article class="stat-card"><span>Total invoices</span><strong id="statInvoices">0</strong><small>Saved locally</small></article>
+        <article class="stat-card"><span>Total revenue</span><strong id="statRevenue">Rs. 0.00</strong><small>All deliveries</small></article>
+        <article class="stat-card"><span>COD amount</span><strong id="statCod">Rs. 0.00</strong><small>To be collected</small></article>
+        <article class="stat-card"><span>Paid deliveries</span><strong id="statPaid">0</strong><small>Completed payments</small></article>
+      </section>
+
+      <form id="invoiceForm" novalidate>
+        <section class="form-card reveal">
+          <div class="section-heading">
+            <div><span class="step-badge">01</span><h2>Business branding</h2><p>Shown on the generated invoice.</p></div>
+          </div>
+          <div class="branding-grid">
+            <label class="logo-uploader" for="businessLogo">
+              <input type="file" id="businessLogo" accept="image/png,image/jpeg,image/webp">
+              <img id="logoPreview" src="assets/company-logo.png" alt="Business logo preview">
+              <span><strong>Upload courier logo</strong><small>PNG, JPG or WEBP · Recommended under 1 MB</small></span>
+            </label>
+            <div class="form-grid two-columns">
+              <div class="field"><label for="courierCompany">Courier company name *</label><input id="courierCompany" name="courierCompany" required placeholder="Example Courier (Pvt) Ltd"></div>
+              <div class="field"><label for="courierPhone">Business phone *</label><input id="courierPhone" name="courierPhone" required inputmode="tel" placeholder="+94 77 123 4567"></div>
+              <div class="field"><label for="courierEmail">Business email</label><input id="courierEmail" name="courierEmail" type="email" placeholder="hello@example.com"></div>
+              <div class="field"><label for="courierWebsite">Website</label><input id="courierWebsite" name="courierWebsite" placeholder="www.example.com"></div>
+              <div class="field full"><label for="courierAddress">Business address *</label><textarea id="courierAddress" name="courierAddress" required rows="2" placeholder="Office address"></textarea></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="form-split">
+          <section class="form-card reveal">
+            <div class="section-heading"><div><span class="step-badge">02</span><h2>Sender details</h2><p>Origin contact information.</p></div></div>
+            <div class="form-grid two-columns">
+              <div class="field"><label for="senderName">Sender name *</label><input id="senderName" required></div>
+              <div class="field"><label for="senderCompany">Company name</label><input id="senderCompany"></div>
+              <div class="field"><label for="senderPhone">Phone number *</label><input id="senderPhone" required inputmode="tel"></div>
+              <div class="field"><label for="senderEmail">Email</label><input id="senderEmail" type="email"></div>
+              <div class="field full"><label for="senderAddress">Address *</label><textarea id="senderAddress" required rows="3"></textarea></div>
+            </div>
+          </section>
+
+          <section class="form-card reveal">
+            <div class="section-heading"><div><span class="step-badge">03</span><h2>Receiver details</h2><p>Destination contact information.</p></div></div>
+            <div class="form-grid two-columns">
+              <div class="field"><label for="receiverName">Receiver name *</label><input id="receiverName" required></div>
+              <div class="field"><label for="receiverCompany">Company name</label><input id="receiverCompany"></div>
+              <div class="field"><label for="receiverPhone">Phone number *</label><input id="receiverPhone" required inputmode="tel"></div>
+              <div class="field"><label for="receiverEmail">Email</label><input id="receiverEmail" type="email"></div>
+              <div class="field full"><label for="receiverAddress">Delivery address *</label><textarea id="receiverAddress" required rows="3"></textarea></div>
+            </div>
+          </section>
+        </div>
+
+        <section class="form-card reveal">
+          <div class="section-heading"><div><span class="step-badge">04</span><h2>Package and delivery</h2><p>Shipment information and service type.</p></div></div>
+          <div class="form-grid four-columns">
+            <div class="field span-two"><label for="packageDescription">Package description *</label><input id="packageDescription" required placeholder="Documents, electronics, garments..."></div>
+            <div class="field"><label for="packageWeight">Weight (kg) *</label><input id="packageWeight" type="number" min="0.01" step="0.01" required></div>
+            <div class="field"><label for="quantity">Quantity *</label><input id="quantity" type="number" min="1" step="1" value="1" required></div>
+            <div class="field"><label for="deliveryType">Delivery type *</label><select id="deliveryType" required><option value="">Select service</option><option>Standard Delivery</option><option>Express Delivery</option><option>Same Day Delivery</option></select></div>
+            <div class="field"><label for="deliveryStatus">Delivery status</label><select id="deliveryStatus"><option>Order Received</option><option>In Transit</option><option>Out for Delivery</option><option>Delivered</option></select></div>
+            <div class="field"><label for="reference">Reference / note</label><input id="reference" placeholder="Optional customer reference"></div>
+            <div class="field"><label for="currency">Currency</label><select id="currency"><option value="LKR">LKR — Sri Lankan Rupee</option><option value="USD">USD — US Dollar</option><option value="EUR">EUR — Euro</option><option value="GBP">GBP — British Pound</option><option value="INR">INR — Indian Rupee</option></select></div>
+          </div>
+        </section>
+
+        <section class="form-card reveal">
+          <div class="section-heading"><div><span class="step-badge">05</span><h2>Payment details</h2><p>Set delivery price and payment status.</p></div></div>
+          <div class="payment-layout">
+            <div class="form-grid two-columns payment-fields">
+              <div class="field"><label for="deliveryPrice">Delivery price *</label><input id="deliveryPrice" type="number" min="0" step="0.01" required placeholder="0.00"></div>
+              <div class="field"><label for="taxAmount">Tax / additional charge</label><input id="taxAmount" type="number" min="0" step="0.01" value="0"></div>
+              <div class="field full cod-field hidden" id="codField"><label for="codAmount">COD amount to collect *</label><input id="codAmount" type="number" min="0" step="0.01" placeholder="0.00"></div>
+            </div>
+            <fieldset class="choice-group"><legend>Payment status *</legend>
+              <label class="choice-card"><input type="radio" name="paymentStatus" value="Paid" required><span class="choice-icon">✓</span><span><strong>Paid</strong><small>Payment completed</small></span></label>
+              <label class="choice-card"><input type="radio" name="paymentStatus" value="COD" required><span class="choice-icon">₨</span><span><strong>Cash on Delivery</strong><small>Collect from receiver</small></span></label>
+            </fieldset>
+          </div>
+        </section>
+
+        <div class="form-actions reveal">
+          <button type="reset" class="button button-secondary" id="resetButton">Clear form</button>
+          <button type="submit" class="button button-primary button-large"><span>Generate Invoice</span><span>→</span></button>
+        </div>
+      </form>
+    </main>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invoice History | ZenTriX CourierDesk</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/animation.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="history">
+  <div class="page-loader" id="pageLoader"><span class="loader-bolt">ϟ</span></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html"><img src="assets/company-logo.png" alt="ZenTriX"><span class="brand-product">CourierDesk</span></a>
+      <nav class="side-nav"><a class="nav-link" href="index.html"><span>＋</span> Create Invoice</a><a class="nav-link active" href="history.html"><span>▦</span> Invoice History</a><a class="nav-link" href="settings.html"><span>⚙</span> Company Settings</a></nav>
+      <div class="sidebar-card"><span class="eyebrow">Quick tip</span><strong>Search instantly.</strong><p>Use invoice number, receiver name or date.</p></div>
+      <div class="sidebar-footer">Developed by <strong>ZenTriX</strong></div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="menuButton" aria-label="Open menu">☰</button>
+        <div><span class="eyebrow">Operations dashboard</span><h1>Invoice history</h1></div>
+        <div class="topbar-actions"><button class="icon-button" id="themeToggle" aria-label="Toggle dark mode">☾</button><a class="button button-primary" href="index.html">＋ New invoice</a></div>
+      </header>
+      <section class="stats-grid">
+        <article class="stat-card"><span>Total invoices</span><strong id="statInvoices">0</strong><small>All saved records</small></article>
+        <article class="stat-card"><span>Total revenue</span><strong id="statRevenue">Rs. 0.00</strong><small>Delivery charges + tax</small></article>
+        <article class="stat-card"><span>Total COD amount</span><strong id="statCod">Rs. 0.00</strong><small>Collection value</small></article>
+        <article class="stat-card"><span>Paid deliveries</span><strong id="statPaid">0</strong><small>Payment completed</small></article>
+      </section>
+      <section class="table-card reveal">
+        <div class="table-toolbar">
+          <div><h2>Saved invoices</h2><p id="recordCount">0 records</p></div>
+          <div class="toolbar-controls">
+            <div class="search-box"><span>⌕</span><input id="historySearch" type="search" placeholder="Search invoice, customer or date"></div>
+            <select id="paymentFilter" aria-label="Filter by payment type"><option value="all">All payments</option><option value="Paid">Paid</option><option value="COD">COD</option></select>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table class="invoice-table">
+            <thead><tr><th>Invoice Number</th><th>Receiver</th><th>Amount</th><th>Payment</th><th>Date</th><th>Actions</th></tr></thead>
+            <tbody id="invoiceTableBody"></tbody>
+          </table>
+        </div>
+        <div class="empty-state hidden" id="emptyState"><div class="empty-icon">▦</div><h3>No invoices found</h3><p>Create your first invoice or adjust the current search.</p><a class="button button-primary" href="index.html">Create invoice</a></div>
+      </section>
+    </main>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div><div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <script src="js/storage.js"></script><script src="js/app.js"></script><script src="js/history.js"></script>
+</body>
+</html>

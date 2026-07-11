@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Settings | ZenTriX CourierDesk</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/animation.css"><link rel="stylesheet" href="css/responsive.css">
+</head>
+<body data-page="settings">
+  <div class="page-loader" id="pageLoader"><span class="loader-bolt">ϟ</span></div>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="index.html"><img src="assets/company-logo.png" alt="ZenTriX"><span class="brand-product">CourierDesk</span></a>
+      <nav class="side-nav"><a class="nav-link" href="index.html"><span>＋</span> Create Invoice</a><a class="nav-link" href="history.html"><span>▦</span> Invoice History</a><a class="nav-link active" href="settings.html"><span>⚙</span> Company Settings</a></nav>
+      <div class="sidebar-card"><span class="eyebrow">Brand control</span><strong>Configure once.</strong><p>New invoices use these settings automatically.</p></div>
+      <div class="sidebar-footer">Developed by <strong>ZenTriX</strong></div>
+    </aside>
+    <main class="main-content">
+      <header class="topbar"><button class="icon-button mobile-menu" id="menuButton" aria-label="Open menu">☰</button><div><span class="eyebrow">Workspace preferences</span><h1>Company settings</h1></div><div class="topbar-actions"><button class="icon-button" id="themeToggle" aria-label="Toggle dark mode">☾</button></div></header>
+      <form id="settingsForm" class="settings-layout">
+        <section class="form-card reveal">
+          <div class="section-heading"><div><span class="step-badge">01</span><h2>Courier company profile</h2><p>Default details for every new invoice.</p></div></div>
+          <label class="logo-uploader settings-logo" for="settingsLogo"><input type="file" id="settingsLogo" accept="image/png,image/jpeg,image/webp"><img id="settingsLogoPreview" src="assets/company-logo.png" alt="Company logo"><span><strong>Change business logo</strong><small>Stored only in this browser</small></span></label>
+          <div class="form-grid two-columns top-gap">
+            <div class="field"><label for="settingsCompanyName">Company name *</label><input id="settingsCompanyName" required></div>
+            <div class="field"><label for="settingsPhone">Phone *</label><input id="settingsPhone" required></div>
+            <div class="field"><label for="settingsEmail">Email</label><input id="settingsEmail" type="email"></div>
+            <div class="field"><label for="settingsWebsite">Website</label><input id="settingsWebsite"></div>
+            <div class="field full"><label for="settingsAddress">Address *</label><textarea id="settingsAddress" rows="3" required></textarea></div>
+          </div>
+        </section>
+        <section class="form-card reveal">
+          <div class="section-heading"><div><span class="step-badge">02</span><h2>Invoice preferences</h2><p>Currency and visual template.</p></div></div>
+          <div class="form-grid two-columns">
+            <div class="field"><label for="settingsCurrency">Default currency</label><select id="settingsCurrency"><option value="LKR">LKR — Sri Lankan Rupee</option><option value="USD">USD — US Dollar</option><option value="EUR">EUR — Euro</option><option value="GBP">GBP — British Pound</option><option value="INR">INR — Indian Rupee</option></select></div>
+            <div class="field"><label for="settingsTemplate">Invoice template</label><select id="settingsTemplate"><option value="gold">ZenTriX Gold</option><option value="midnight">Midnight Professional</option><option value="minimal">Clean Minimal</option></select></div>
+            <div class="field full"><label for="settingsFooter">Invoice footer message</label><textarea id="settingsFooter" rows="3"></textarea></div>
+          </div>
+          <div class="template-preview-grid">
+            <button type="button" class="template-preview active" data-template="gold"><span class="template-swatch gold"></span><strong>ZenTriX Gold</strong><small>Premium and branded</small></button>
+            <button type="button" class="template-preview" data-template="midnight"><span class="template-swatch midnight"></span><strong>Midnight</strong><small>Bold and corporate</small></button>
+            <button type="button" class="template-preview" data-template="minimal"><span class="template-swatch minimal"></span><strong>Minimal</strong><small>Simple and clean</small></button>
+          </div>
+        </section>
+        <div class="form-actions"><button type="button" class="button button-danger-outline" id="resetDataButton">Reset app data</button><button class="button button-primary button-large" type="submit">Save settings</button></div>
+      </form>
+    </main>
+  </div>
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div><div class="sidebar-overlay" id="sidebarOverlay"></div>
+  <script src="js/storage.js"></script><script src="js/app.js"></script><script src="js/settings.js"></script>
+</body>
+</html>
